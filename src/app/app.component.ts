@@ -1,3 +1,4 @@
+import { ContasPage } from './../pages/contas/contas';
 import { Component } from '@angular/core';
 import { Platform } from 'ionic-angular';
 
@@ -8,10 +9,13 @@ import { HomePage } from '../pages/home/home';
 })
 export class MyApp {
   rootPage:any = HomePage;
+  home:any = HomePage;
+  contas:any = ContasPage;
 
   constructor(platform: Platform) {
     platform.ready().then(() => {
 
+    this.rootPage = this.home;
     });
   }
 
