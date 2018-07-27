@@ -1,15 +1,22 @@
-import { HttpClient } from '@angular/common/http';
+//import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable()
 export class ContasProvider {
 
-  constructor(public http: HttpClient) {
-    console.log('Hello ContasProvider Provider');
+  list:any = [];
+
+  constructor() {
+
   }
 
   getList(){
-
+    this.list = [
+      {descricao:"Alimentação"},
+      {descricao:"Lazer"},
+      {descricao:"Serviços"}
+    ]
+    return this.list;
   }
 
   insert(conta){
