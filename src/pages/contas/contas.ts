@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 
+
 @IonicPage()
 @Component({
   selector: 'page-contas',
@@ -10,17 +11,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ContasPage {
 
-  listaContas: any = this.listaContas.getList();
+  listaContas: any = this.providerContas.getList();
 
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public contas: ContasProvider
+    public providerContas: ContasProvider
 
   ) {
+    this.getAllContas();
   }
 
   ionViewDidLoad() {
+    this.getAllContas();
+  }
+
+  public getAllContas(){
+
 
   }
 
