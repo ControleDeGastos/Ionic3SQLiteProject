@@ -1,6 +1,7 @@
 import { ContasProvider } from './../../providers/contas/contas';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { ModalContasPage } from '../modal-contas/modal-contas';
 
 
 
@@ -16,19 +17,21 @@ export class ContasPage {
   constructor(
     public navCtrl: NavController,
     public navParams: NavParams,
-    public providerContas: ContasProvider
+    public providerContas: ContasProvider,
+    public modalCtrl: ModalController
 
   ) {
-    this.getAllContas();
+
   }
 
   ionViewDidLoad() {
-    this.getAllContas();
+
   }
 
-  public getAllContas(){
 
 
+  insert(){
+    this.modalCtrl.create(ModalContasPage)
   }
 
 }
