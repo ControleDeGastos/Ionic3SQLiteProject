@@ -1,5 +1,7 @@
 {
   "name": "ControleFinanceiro",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "ionic-angular"
 }
