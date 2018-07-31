@@ -6,6 +6,7 @@ import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
 export class ContasProvider {
 
   list:any = [];
+  database: any;
 
   constructor() {
     setTimeout(function() {
@@ -39,9 +40,12 @@ export class ContasProvider {
     setTimeout(function() {
       let sqlQuery = "INSERT INTO contas (descricao) VALUES (?)";
       this.database.executeSql(sqlQuery, [conta.descricao]).then((data) => {
-
-      })
-    })
+        conta.id = data.insertId;
+        successCallBack(conta);
+      }, (error) => {
+        console.log("Erro na inserção da conta: " + JSON.stringify(error.err));
+      });
+    }, 100);
   }
 
   edit(conta){
