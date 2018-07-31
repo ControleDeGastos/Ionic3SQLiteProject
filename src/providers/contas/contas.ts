@@ -19,7 +19,7 @@ export class ContasProvider {
     return this.list;
   }
 
-  insert(conta){
+  insert(conta, successCallBack){
 
   }
 

@@ -1,6 +1,6 @@
 import { ContasProvider } from './../../providers/contas/contas';
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { ModalContasPage } from '../modal-contas/modal-contas';
 
 
@@ -18,7 +18,8 @@ export class ContasPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public providerContas: ContasProvider,
-    public modalCtrl: ModalController
+    public modalCtrl: ModalController,
+    private toast: ToastController
 
   ) {
 
@@ -32,6 +33,15 @@ export class ContasPage {
 
   insert(){
     let modal = this.modalCtrl.create(ModalContasPage);
+
+    modal.onDidDismiss(data => {
+      if (data){
+        this.providerContas.insert(data, (data) => {
+          this.listaContas.push(data);
+          this.toast.create({message: 'Conta Inserida.', duration: 3000, position:'botton'}).present();
+        });
+      }
+    });
     modal.present();
   }
 
