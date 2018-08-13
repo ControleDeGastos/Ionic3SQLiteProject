@@ -50,4 +50,6 @@ export class ModalContasPage {
     return this.conta.insert(this.classeConta);
   }
 
+
+
 }
