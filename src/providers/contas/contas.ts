@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
 import { SQLite, SQLiteObject } from '@ionic-native/sqlite';
+import { DatabaseProvider } from '../database/database';
 
 @Injectable()
 export class ContasProvider {
 
   list:any = [];
 
-  constructor() {
-
+  constructor(private dbProvider: DatabaseProvider) {
+    dbProvider.criarDatabase();
   }
 
   getList(){

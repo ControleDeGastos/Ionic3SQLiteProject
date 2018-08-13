@@ -29,7 +29,7 @@ export class DatabaseProvider {
   private criarTabelas(db: SQLiteObject){
     //Criando as tabelas
     db.sqlBatch([
-      ['CREATE TABLE IF NOT EXISTS contas (id INTEGER PRIMARY KEY AUTOINCREMENT, descricao TEXT']
+      ['CREATE TABLE IF NOT EXISTS contas (id integer primary key AUTOINCREMENT NOT NULL, descricao TEXT']
     ])
     .then(() => console.log('Tabelas criadas'))
     .catch(e => console.error('Erro ao criar as tabelas', e));

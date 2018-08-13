@@ -32,17 +32,7 @@ export class ContasPage {
 
 
   insert(){
-    let modal = this.modalCtrl.create(ModalContasPage);
 
-    modal.onDidDismiss(data => {
-      if (data){
-        this.providerContas.insert(data, (data) => {
-          this.listaContas.push(data);
-          this.toast.create({message: 'Conta Inserida.', duration: 3000, position:'botton'}).present();
-        });
-      }
-    });
-    modal.present();
   }
 
 }
