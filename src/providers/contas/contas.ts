@@ -13,16 +13,19 @@ export class ContasProvider {
   }
 
   getList(){
-    this.list = [
-      {descricao:"Alimentação"},
-      {descricao:"Lazer"},
-      {descricao:"Serviços"}
-    ]
-    return this.list;
+
   }
 
   insert(conta, successCallBack){
+    return this.dbProvider.getDB()
+    .then((db: SQLiteObject) => {
+      let sql = 'insert into conta (descricao) values (?)';
+      let data = [conta.descricao];
+      return db.executeSql(sql, data)
 
+      .catch((e) => console.error(e));
+    })
+    .catch((e) => console.error(e));
   }
 
   edit(conta){
@@ -33,4 +36,9 @@ export class ContasProvider {
 
   }
 
+}
+
+export class Conta{
+  id:number;
+  descricao:string;
 }

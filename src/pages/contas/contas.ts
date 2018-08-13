@@ -32,7 +32,9 @@ export class ContasPage {
 
 
   insert(){
+    let modal = this.modalCtrl.create(ModalContasPage);
 
+    modal.present();
   }
 
 }
