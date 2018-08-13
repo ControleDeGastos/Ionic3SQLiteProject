@@ -17,8 +17,8 @@ export class ModalContasPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public viewCtrl: ViewController,
-    public providerContas: ContasProvider,
-    public toast: ToastController
+    private providerContas: ContasProvider,
+    private toast: ToastController
 
   ) {
     this.view = viewCtrl;
