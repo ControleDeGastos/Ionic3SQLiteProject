@@ -1,7 +1,8 @@
-import { ContasProvider } from './../../providers/contas/contas';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, ToastController } from 'ionic-angular';
 import { ModalContasPage } from '../modal-contas/modal-contas';
+import { ContasProvider } from './../../providers/contas/contas';
+import { Conta } from '../../providers/contas/contas';
 
 
 
@@ -12,7 +13,7 @@ import { ModalContasPage } from '../modal-contas/modal-contas';
 })
 export class ContasPage {
 
-  listaContas: any = this.providerContas.getList();
+  listaContas: any[] = [];
 
   constructor(
     public navCtrl: NavController,
@@ -22,10 +23,14 @@ export class ContasPage {
     private toast: ToastController
 
   ) {
-
+    this.getAllContas();
   }
 
-  ionViewDidLoad() {
+  ionViewDidEnter() {
+    this.getAllContas();
+  }
+
+  public getAllContas(){
 
   }
 
@@ -35,6 +40,10 @@ export class ContasPage {
     let modal = this.modalCtrl.create(ModalContasPage);
 
     modal.present();
+  }
+
+  remover(conta: Conta){
+
   }
 
 }

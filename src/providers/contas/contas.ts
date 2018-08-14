@@ -16,7 +16,7 @@ export class ContasProvider {
 
   }
 
-  insert(conta, successCallBack){
+  insert(conta: Conta){
     return this.dbProvider.getDB()
     .then((db: SQLiteObject) => {
       let sql = 'insert into conta (descricao) values (?)';
