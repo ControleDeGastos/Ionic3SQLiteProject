@@ -27,7 +27,13 @@ export class ContasPage {
   }
 
   ionViewDidEnter() {
-    this.getAllContas();
+    this.providerContas.getList()
+    .then((result:any) => {
+      this.listaContas = result;
+    })
+    .catch(() => {
+      this.toast.create({message: 'Erro ao carregar contas', duration:3000, position: 'botton'}).present();
+    })
   }
 
   public getAllContas(){

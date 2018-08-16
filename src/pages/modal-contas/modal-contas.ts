@@ -42,7 +42,7 @@ export class ModalContasPage {
     .catch(() => {
       this.toast.create({ message: 'Erro ao salvar a conta', duration: 3000, position: 'botton' }).present();
     });
-
+    this.view.dismiss();
   }
 
   private salvarConta(){
