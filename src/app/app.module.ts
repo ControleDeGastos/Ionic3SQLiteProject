@@ -15,6 +15,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { ContasProvider } from '../providers/contas/contas';
 import { ModalContasPage } from '../pages/modal-contas/modal-contas';
 import { DatabaseProvider } from '../providers/database/database';
+import { LancamentosProvider } from '../providers/lancamentos/lancamentos';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { DatabaseProvider } from '../providers/database/database';
     {provide: LOCALE_ID, useValue: 'pt-BR'},
     ContasProvider,
     SQLite,
-    DatabaseProvider
+    DatabaseProvider,
+    LancamentosProvider
   ]
 })
 export class AppModule {}
