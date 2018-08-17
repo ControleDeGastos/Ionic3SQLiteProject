@@ -27,6 +27,10 @@ export class ContasPage {
   }
 
   ionViewDidEnter() {
+    this.getAllContas();
+  }
+
+  public getAllContas(){
     this.providerContas.getList()
     .then((result:any) => {
       this.listaContas = result;
@@ -36,7 +40,7 @@ export class ContasPage {
     })
   }
 
-  public getAllContas(){
+  edit(){
 
   }
 
