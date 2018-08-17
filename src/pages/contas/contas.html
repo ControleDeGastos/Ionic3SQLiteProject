@@ -16,11 +16,11 @@
 <ion-content padding>
   <ion-list>
     <ion-item-sliding *ngFor="let item of listaContas">
-      <ion-item (click)="edit()">
+      <ion-item (click)="edit(item)">
         {{ item.descricao }}
       </ion-item>
       <ion-item-options>
-        <button (click)="remover()" ion-button color="danger">
+        <button (click)="removerContas(item)" ion-button color="danger">
           Excluir
         </button>
       </ion-item-options>
