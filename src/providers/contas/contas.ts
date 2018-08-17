@@ -53,8 +53,16 @@ export class ContasProvider {
 
   }
 
-  delete(conta){
+  public remove(id:number){
+    return this.dbProvider.getDB()
+    .then((db: SQLiteObject) => {
+      let sql = 'delete from contas where id = ?';
+      let data  = [id];
+      return db.executeSql(sql, data)
 
+      .catch((e) => console.error(e));
+    })
+    .catch((e) => console.error(e));
   }
 
 }

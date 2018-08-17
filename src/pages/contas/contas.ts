@@ -52,8 +52,13 @@ export class ContasPage {
     modal.present();
   }
 
-  remover(conta: Conta){
-
+  removerContas(conta: Conta){
+    this.providerContas.remove(conta.id)
+    .then(() => {
+      var index = this.listaContas.indexOf(conta);
+      this.listaContas.splice(index, 1);
+      this.toast.create({ message: 'Conta Removida', duration: 3000, position: 'botton' }).present();
+    });
   }
 
 }
