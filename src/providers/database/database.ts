@@ -30,6 +30,7 @@ export class DatabaseProvider {
     //Criando as tabelas
     db.sqlBatch([
       ['CREATE TABLE IF NOT EXISTS contas (id integer primary key AUTOINCREMENT NOT NULL, descricao TEXT']
+      ['CREATE TABLE IF NOT EXISTS lancamentos(id INTEGER PRIMARY KEY AUTOINCREMENT, descricao TEXT, valor REAL, data TEXT, conta TEXT, entradaSaida TEXT, pago TEXT)']
     ])
     .then(() => console.log('Tabelas criadas'))
     .catch(e => console.error('Erro ao criar as tabelas', e));
