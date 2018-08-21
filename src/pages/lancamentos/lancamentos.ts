@@ -1,8 +1,10 @@
+import { LancamentosProvider } from './../../providers/lancamentos/lancamentos';
 import { ModalContasPage } from './../modal-contas/modal-contas';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ModalController, Toast, ToastController } from 'ionic-angular';
 import { SQLiteObject } from '@ionic-native/sqlite';
 import { ContasProvider } from '../../providers/contas/contas';
+import { ModalLancamentosPage } from '../modal-lancamentos/modal-lancamentos';
 
 
 @IonicPage()
@@ -17,7 +19,8 @@ export class LancamentosPage {
     public navParams: NavParams,
     private providerContas: ContasProvider,
     public modalCtrl: ModalController,
-    private toast: ToastController
+    private toast: ToastController,
+    private providerLancamentos: LancamentosProvider
 
   ) {
 
@@ -25,7 +28,7 @@ export class LancamentosPage {
   }
 
   insert(){
-    let modal = this.modalCtrl.create(ModalContasPage)
+    let modal = this.modalCtrl.create(ModalLancamentosPage);
   }
 
 
