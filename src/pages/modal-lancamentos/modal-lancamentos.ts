@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Lancamentos } from '../../providers/lancamentos/lancamentos';
+import { ContasProvider } from './../../providers/contas/contas';
 
 
 @IonicPage()
@@ -16,14 +17,28 @@ export class ModalLancamentosPage {
 
   contas: any[] = [];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController,
+    public navParams: NavParams,
+    public providerContas: ContasProvider,
+    public toast: ToastController
+
+  ) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ModalLancamentosPage');
   }
 
-
+  public getAllContas(){
+    this.providerContas.getList()
+    .then((result:any)=>{
+      this.contas = result;
+    })
+    .catch(()=>{
+      this.toast.create({message: 'Erro ao carregar as categorias', duration: 3000, position: 'botton'}).present();
+    })
+  }
 
   cancel(){
 
