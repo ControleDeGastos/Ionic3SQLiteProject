@@ -24,6 +24,8 @@ export class ModalLancamentosPage {
     public toast: ToastController
 
   ) {
+    this.classe = new Lancamentos();
+    this.getAllContas();
   }
 
   ionViewDidLoad() {
