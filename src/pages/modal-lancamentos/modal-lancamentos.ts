@@ -1,7 +1,9 @@
+import { LancamentosProvider } from './../../providers/lancamentos/lancamentos';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ToastController } from 'ionic-angular';
 import { Lancamentos } from '../../providers/lancamentos/lancamentos';
 import { ContasProvider } from './../../providers/contas/contas';
+import { LancamentosPage } from '../lancamentos/lancamentos';
 
 
 @IonicPage()
@@ -21,7 +23,8 @@ export class ModalLancamentosPage {
     public navCtrl: NavController,
     public navParams: NavParams,
     public providerContas: ContasProvider,
-    public toast: ToastController
+    public toast: ToastController,
+    private  providerLancamento: LancamentosProvider
 
   ) {
     this.classe = new Lancamentos();
@@ -29,7 +32,7 @@ export class ModalLancamentosPage {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ModalLancamentosPage');
+
   }
 
   public getAllContas(){
@@ -43,11 +46,24 @@ export class ModalLancamentosPage {
   }
 
   cancel(){
-
+    this.view.dismiss();
   }
 
   salvar(){
+    this.salvarConta()
+    .then(() => {
+      this.toast.create({ message: 'Lançamento salvo.', duration: 3000, position: 'botton' }).present();
+      this.navCtrl.pop();
+      this.navCtrl.push(LancamentosPage);
+    })
+    .catch(() => {
+      this.toast.create({ message: 'Erro ao salvar a lançamento', duration: 3000, position: 'botton' }).present();
+    });
+    this.view.dismiss();
+  }
 
+  private salvarConta(){
+    return this.providerLancamento.insert(this.classe);
   }
 
 }
